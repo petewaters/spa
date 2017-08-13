@@ -16,6 +16,14 @@ jobs:
 
     working_directory: ~/repo
 
+    environment:
+      ENVIRONMENT: testing
+      DB_URL: 127.0.0.1
+      DB_NAME: circle_test
+      DB_USER: ubuntu
+      DB_CONNECTION: pgsql
+      APP_KEY: abcdefghijklmnopqrstuvwxyz123456
+
     steps:
       - checkout
 
