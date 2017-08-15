@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Tymon\JWTAuth\JWTAuth;
+use App\Http\Requests\User\RegisterFormRequest;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +18,7 @@ class AuthController extends Controller
         $this->auth = $auth;
     }
 
-    public function register(Request $request)
+    public function register(RegisterFormRequest $request)
     {
         $user = User::create([
             'name' => $request->name,
