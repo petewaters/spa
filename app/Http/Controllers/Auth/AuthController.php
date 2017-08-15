@@ -26,8 +26,13 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        // Attempt auth
-        // Respond with JWT
-        // Respond with user info
+        $token = $this->auth->attempt($request->only('email', 'password'));
+
+        return response()->json([
+            'data' => $user,
+            'meta' => [
+                'token' => $token,
+            ]
+        ]);
     }
 }
