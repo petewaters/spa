@@ -11,4 +11,5 @@ Route::post('/logout', 'Auth\AuthController@logout');
 Route::group(['middleware' => 'jwt.auth'], function () {
     // User routes
     Route::get('/user', 'Auth\AuthController@user');
+    Route::get('/dashboard', 'DashboardController@index');
 });
