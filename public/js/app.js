@@ -14551,9 +14551,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("Login")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('div', {
+  }, [(_vm.errors.root) ? _c('div', {
     staticClass: "alert alert-danger"
-  }, [_vm._v("\n                        Unable to login with those details\n                    ")]), _vm._v(" "), _c('form', {
+  }, [_vm._v("\n                        Unable to login with those details\n                    ")]) : _vm._e(), _vm._v(" "), _c('form', {
     staticClass: "form-horizontal",
     attrs: {
       "method": "POST"

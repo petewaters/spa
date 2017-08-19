@@ -5,7 +5,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Login</div>
                     <div class="panel-body">
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger" v-if="errors.root">
                             Unable to login with those details
                         </div>
 
