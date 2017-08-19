@@ -44690,13 +44690,28 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('nav', {
     staticClass: "navbar navbar-default navbar-static-top"
   }, [_c('div', {
     staticClass: "container"
-  }, [_c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      "id": "app-navbar-collapse"
+    }
+  }, [_c('ul', {
+    staticClass: "nav navbar-nav"
+  }, [_vm._v("\n                     \n                ")]), _vm._v(" "), _c('ul', {
+    staticClass: "nav navbar-nav navbar-right"
+  }, [_c('li', [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'login'
+      }
+    }
+  }, [_vm._v("Login")])], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "navbar-header"
   }, [_c('button', {
     staticClass: "navbar-toggle collapsed",
@@ -44718,20 +44733,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("\n                    SPA\n                ")])]), _vm._v(" "), _c('div', {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      "id": "app-navbar-collapse"
-    }
-  }, [_c('ul', {
-    staticClass: "nav navbar-nav"
-  }, [_vm._v("\n                     \n                ")]), _vm._v(" "), _c('ul', {
-    staticClass: "nav navbar-nav navbar-right"
-  }, [_c('li', [_vm._v("\"{ name: 'login' }\">Login")]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._v("\n                    SPA\n                ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Register")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("Register")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
     staticClass: "dropdown"
   }, [_c('a', {
     staticClass: "dropdown-toggle",
@@ -44752,7 +44762,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("\n                                    Logout\n                                ")])])])])])])])])])
+  }, [_vm._v("\n                                    Logout\n                                ")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
