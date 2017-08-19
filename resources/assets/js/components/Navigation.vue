@@ -22,11 +22,14 @@
                         &nbsp;
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" v-if="!authenticated">
                         <li><router-link :to="{ name: 'login' }">Login</router-link></li>
                         <li><router-link :to="{ name: 'register' }">Register</router-link></li>
-                
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right" v-if="authenticated">
+                        <li><router-link :to="{ name: 'dashboard'}">Dashboard</router-link></li>
                         <li class="dropdown">
                             <router-link :to="{ name: 'dashboard' }" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Pete Waters<span class="caret"></span>
@@ -46,3 +49,14 @@
         </nav>
     </div>
 </template>
+
+<script>
+    import { mapGetters } from 'vuex'
+
+    export default {
+        computed: mapGetters({
+            user: 'auth/user',
+            authenticated: 'auth/authenticated'
+        })
+    }
+</script>
