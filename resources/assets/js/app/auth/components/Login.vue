@@ -6,7 +6,7 @@
                     <div class="panel-heading">Login</div>
                     <div class="panel-body">
                         <div class="alert alert-danger" v-if="errors.root">
-                            Unable to login with those details
+                            {{ errors.root }}
                         </div>
 
                         <form class="form-horizontal" method="POST" @submit.prevent="submit">
