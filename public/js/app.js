@@ -13712,7 +13712,7 @@ if (false) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ([{
-    path: '/home',
+    path: '/',
     component: __WEBPACK_IMPORTED_MODULE_0__components__["a" /* Home */],
     name: 'home'
 }]);
