@@ -1,5 +1,11 @@
 import router from './router'
 import store from './vuex'
+import localforage from 'localforage'
+
+localforage.config({
+    driver: localforage.LOCALSTORAGE,
+    storeName: 'spa'
+})
 
 /**
  * First we will load all of this project's JavaScript dependencies which
