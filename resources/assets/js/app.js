@@ -1,4 +1,5 @@
 import router from './router'
+import store from './vuex'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -21,5 +22,6 @@ Vue.component('navigation', require('./components/Navigation.vue'));
 
 const app = new Vue({
     el: '#app',
+    store: store,
     router: router
 });
