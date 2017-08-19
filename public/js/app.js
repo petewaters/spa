@@ -14586,6 +14586,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 
 
@@ -14594,7 +14597,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             name: null,
             email: null,
-            password: null
+            password: null,
+            errors: []
         };
     },
 
@@ -14607,7 +14611,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     name: this.name,
                     email: this.email,
                     password: this.password
-                }
+                },
+                context: this
             });
         }
     })
@@ -14630,7 +14635,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("Register")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('form', {
+  }, [_vm._v("\n\n                    " + _vm._s(_vm.errors) + "\n\n                    "), _c('form', {
     staticClass: "form-horizontal",
     on: {
       "submit": function($event) {
@@ -15007,10 +15012,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 var register = function register(_ref, _ref2) {
     var dispatch = _ref.dispatch;
-    var payload = _ref2.payload;
+    var payload = _ref2.payload,
+        context = _ref2.context;
 
     return axios.post('/api/register', payload).then(function (response) {
         console.log(response);
+    }).catch(function (error) {
+        context.errors = error.response.data.errors;
     });
 };
 
