@@ -1,3 +1,4 @@
 import auth from './auth/routes'
+import home from './home/routes'
 
-export default [...auth]
+export default [...auth, ...home]

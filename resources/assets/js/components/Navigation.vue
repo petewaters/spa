@@ -13,9 +13,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="#">
-                        SPA
-                    </a>
+                    <router-link :to="{ name: 'home' }">SPA</router-link>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -27,7 +25,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><router-link :to="{ name: 'login' }">Login</router-link></li>
-                        <li><a href="#">Register</a></li>
+                        <li><router-link :to="{ name: 'register' }">Register</router-link></li>
                 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
