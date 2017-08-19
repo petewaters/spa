@@ -13,7 +13,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <router-link :to="{ name: 'home' }">SPA</router-link>
+                    <router-link :to="{ name: 'home' }" class="navbar-brand">SPA</router-link>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -28,9 +28,9 @@
                         <li><router-link :to="{ name: 'register' }">Register</router-link></li>
                 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <router-link :to="{ name: 'dashboard' }" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 Pete Waters<span class="caret"></span>
-                            </a>
+                            </router-link>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
