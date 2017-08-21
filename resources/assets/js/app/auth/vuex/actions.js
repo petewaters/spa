@@ -1,3 +1,5 @@
+import { setHttpToken } from '../../../helpers'
+
 export const register = ({ dispatch }, { payload, context }) => {
     return axios.post('/api/register', payload).then((response) => {
         console.log(response)
@@ -12,10 +14,12 @@ export const login = ({ dispatch }, { payload, context }) => {
             console.log('fetchuser')
         })
     }).catch((error) => {
+        console.log(error)
         context.errors = error.response.data.errors
     })
 }
 
 export const setToken = ({ commit, dispatch }, token) => {
     commit('setToken', token)
+    setHttpToken(token)
 }
