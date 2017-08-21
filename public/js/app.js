@@ -33942,12 +33942,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         login: 'auth/login'
     }), {
         submit: function submit() {
+            var _this = this;
+
             this.login({
                 payload: {
                     email: this.email,
                     password: this.password
                 },
                 context: this
+            }).then(function () {
+                _this.$router.replace({ name: 'dashboard ' });
             });
         }
     })
@@ -34211,6 +34215,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         register: 'auth/register'
     }), {
         submit: function submit() {
+            var _this = this;
+
             this.register({
                 payload: {
                     name: this.name,
@@ -34218,6 +34224,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     password: this.password
                 },
                 context: this
+            }).then(function () {
+                _this.$router.replace({ name: 'dashboard ' });
             });
         }
     })
