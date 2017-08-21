@@ -17595,8 +17595,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var setToken = function setToken(state, token) {
-    // check empty and remove token
-
     __WEBPACK_IMPORTED_MODULE_0_localforage___default.a.setItem('auth-token', token);
 };
 
