@@ -22,6 +22,12 @@ export const login = ({ dispatch }, { payload, context }) => {
     })
 }
 
+export const logout = ({ dispatch }) => {
+    return axios.post('/api/logout').then((response) => {
+        dispatch('clearAuth')
+    })
+}
+
 export const getUser = ({ commit }) => {
     return axios.get('/api/user').then((response) => {
         commit('setAuthenticated', true)

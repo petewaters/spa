@@ -34843,6 +34843,7 @@ var beforeEach = function beforeEach(to, from, next) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUser", function() { return getUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setToken", function() { return setToken; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tokenExists", function() { return tokenExists; });
@@ -34884,8 +34885,16 @@ var login = function login(_ref3, _ref4) {
     });
 };
 
-var getUser = function getUser(_ref5) {
-    var commit = _ref5.commit;
+var logout = function logout(_ref5) {
+    var dispatch = _ref5.dispatch;
+
+    return axios.post('/api/logout').then(function (response) {
+        dispatch('clearAuth');
+    });
+};
+
+var getUser = function getUser(_ref6) {
+    var commit = _ref6.commit;
 
     return axios.get('/api/user').then(function (response) {
         commit('setAuthenticated', true);
@@ -34893,9 +34902,9 @@ var getUser = function getUser(_ref5) {
     });
 };
 
-var setToken = function setToken(_ref6, token) {
-    var commit = _ref6.commit,
-        dispatch = _ref6.dispatch;
+var setToken = function setToken(_ref7, token) {
+    var commit = _ref7.commit,
+        dispatch = _ref7.dispatch;
 
     if (Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["isEmpty"])(token)) {
         return dispatch('tokenExists').then(function (token) {
@@ -34907,9 +34916,9 @@ var setToken = function setToken(_ref6, token) {
     Object(__WEBPACK_IMPORTED_MODULE_1__helpers__["a" /* setHttpToken */])(token);
 };
 
-var tokenExists = function tokenExists(_ref7, token) {
-    var commit = _ref7.commit,
-        dispatch = _ref7.dispatch;
+var tokenExists = function tokenExists(_ref8, token) {
+    var commit = _ref8.commit,
+        dispatch = _ref8.dispatch;
 
     return __WEBPACK_IMPORTED_MODULE_2_localforage___default.a.getItem('auth-token').then(function (token) {
         if (Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["isEmpty"])(token)) {
@@ -34920,8 +34929,8 @@ var tokenExists = function tokenExists(_ref7, token) {
     });
 };
 
-var clearAuth = function clearAuth(_ref8, token) {
-    var commit = _ref8.commit;
+var clearAuth = function clearAuth(_ref9, token) {
+    var commit = _ref9.commit;
 
     commit('setAuthenticated', false);
     commit('setUserData', null);
@@ -48864,6 +48873,8 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(5);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -48923,6 +48934,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])({
         user: 'auth/user',
         authenticated: 'auth/authenticated'
+    }),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])({
+        logout: 'auth/logout'
+    }), {
+        signout: function signout() {
+            var _this = this;
+
+            this.logout().then(function () {
+                _this.$router.replace({ name: 'home' });
+            });
+        }
     })
 });
 
@@ -48987,7 +49009,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("\n                            Pete Waters"), _c('span', {
     staticClass: "caret"
-  })]), _vm._v(" "), _vm._m(1)], 1)]) : _vm._e()])])])])
+  })]), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu",
+    attrs: {
+      "role": "menu"
+    }
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.signout($event)
+      }
+    }
+  }, [_vm._v("\n                                    Logout\n                                ")])])])], 1)]) : _vm._e()])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('button', {
     staticClass: "navbar-toggle collapsed",
@@ -49005,17 +49042,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('span', {
     staticClass: "icon-bar"
   })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "dropdown-menu",
-    attrs: {
-      "role": "menu"
-    }
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("\n                                    Logout\n                                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
