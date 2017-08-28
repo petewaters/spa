@@ -4,11 +4,19 @@ export default [
     {
         path: '/login',
         component: Login,
-        name: 'login'
+        name: 'login',
+        meta: {
+            guest: true,
+            auth: false
+        }
     },
     {
         path: '/register',
         component: Register,
-        name: 'register'
+        name: 'register',
+        meta: {
+            guest: true,
+            auth: false
+        }
     }
 ]
