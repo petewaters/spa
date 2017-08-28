@@ -1,4 +1,5 @@
 import store from '../vuex'
+import localforage from 'localforage'
 
 const beforeEach = ((to, from, next) => {
     store.dispatch('auth/tokenExists').then(() => {
@@ -10,6 +11,7 @@ const beforeEach = ((to, from, next) => {
         next()
     }).catch(() => {
         if (to.meta.auth) {
+            localforage.setItem('intended-route', to.name)
             next({ name: 'login' })
             return
         }
