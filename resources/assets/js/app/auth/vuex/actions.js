@@ -43,7 +43,7 @@ export const setToken = ({ commit, dispatch }, token) => {
 export const tokenExists = ({ commit, dispatch }, token) => {
     return localforage.getItem('auth-token').then((token) => {
         if (isEmpty(token)) {
-            Promise.reject('NO_AUTH_TOKEN_IN_LOCAL_STORAGE')
+            return Promise.reject('NO_AUTH_TOKEN_IN_LOCAL_STORAGE')
         }
 
         return Promise.resolve(token)
