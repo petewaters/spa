@@ -49,3 +49,10 @@ export const tokenExists = ({ commit, dispatch }, token) => {
         return Promise.resolve(token)
     })
 }
+
+export const clearAuth = ({ commit }, token) => {
+    commit('setAuthenticated', false)
+    commit('setUserData', null)
+    commit('setToken', null)
+    setHttpToken(null)
+}

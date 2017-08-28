@@ -31231,7 +31231,10 @@ Vue.component('app', __webpack_require__(66));
 Vue.component('navigation', __webpack_require__(68));
 
 __WEBPACK_IMPORTED_MODULE_1__vuex__["a" /* default */].dispatch('auth/setToken').then(function () {
-    console.log('get user');
+    __WEBPACK_IMPORTED_MODULE_1__vuex__["a" /* default */].dispatch('auth/getUser').catch(function () {
+        __WEBPACK_IMPORTED_MODULE_1__vuex__["a" /* default */].dispatch('auth/clearAuth');
+        __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].replace({ name: 'login' });
+    });
 });
 
 var app = new Vue({
@@ -34641,6 +34644,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUser", function() { return getUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setToken", function() { return setToken; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tokenExists", function() { return tokenExists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearAuth", function() { return clearAuth; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__helpers__ = __webpack_require__(40);
@@ -34707,11 +34711,20 @@ var tokenExists = function tokenExists(_ref7, token) {
 
     return __WEBPACK_IMPORTED_MODULE_2_localforage___default.a.getItem('auth-token').then(function (token) {
         if (Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["isEmpty"])(token)) {
-            Promise.reject('NO_AUTH_TOKEN_IN_LOCAL_STORAGE');
+            return Promise.reject('NO_AUTH_TOKEN_IN_LOCAL_STORAGE');
         }
 
         return Promise.resolve(token);
     });
+};
+
+var clearAuth = function clearAuth(_ref8, token) {
+    var commit = _ref8.commit;
+
+    commit('setAuthenticated', false);
+    commit('setUserData', null);
+    commit('setToken', null);
+    Object(__WEBPACK_IMPORTED_MODULE_1__helpers__["a" /* setHttpToken */])(null);
 };
 
 /***/ }),
